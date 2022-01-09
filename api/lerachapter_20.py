@@ -89,7 +89,6 @@ class Checker(ParentChecker):
 
         res = self.session.post(url= url, headers= headers, data= postdata)
         result = res.text #brotli.decompress(res.content)
-        print(result)
         try:
             result = result.split(r'ass="pmpro_message pmpro_error">', maxsplit= 1)[1].split(r"</div>", maxsplit= 1)[0]
             return result

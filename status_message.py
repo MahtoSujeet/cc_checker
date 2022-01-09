@@ -15,12 +15,12 @@ Progress: ■■■■■□□□□□ 50%
 
 _100 = """∆  GATE: Stripe/Charge- 1$
   
-  <b>------¥¥ RESULT ¥¥------</b>
+  ------<b>✓ RESULT ✓</b>-------
   |- CARD: <code>{card}</code>
   |- STATUS: {status}
   |- RESPONSE: {result}
 
-  -------¥¥ INFO ¥¥--------
+  -------<b>✓ INFO ✓</b>--------
   |- Checked By: @{user}
   |- Time Taken: {time}
   

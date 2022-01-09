@@ -62,7 +62,7 @@ class TgBot:
                 card = self.card,
                 status= status,
                 result = result,
-                user= self.update.from_user.username,
+                user= self.message.from_user.username,
                 time = time
             )
         )
