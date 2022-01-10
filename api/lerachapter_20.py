@@ -75,7 +75,7 @@ class Checker(ParentChecker):
             return self.token
         except KeyError:
             return "Error: " + res_json["error"]["message"]
-        
+
 
     def make_request_2(self):
         """2nd request. return: result"""

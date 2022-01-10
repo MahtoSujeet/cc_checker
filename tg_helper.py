@@ -1,4 +1,5 @@
 from pyrogram.types import Message
+from pyrogram import Client
 import status_message
 import re
 
@@ -75,3 +76,11 @@ class TgBot:
                 document= path
             )
 
+    @staticmethod
+    def reply_message(text: str, update, message: Message):
+        update.send_message(
+            chat_id= message.chat.id,
+            reply_to_message_id= message.message_id,
+            text= text,
+            parse_mode= "html"
+        )
