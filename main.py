@@ -5,10 +5,16 @@ from pyrogram.types import Message
 import time
 import os
 
+# bot details
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+API_HASH = os.getenv("API_HASH")
+API_ID = os.getenv("API_ID")
+
 
 # chk card checking function
 def chk(data, update, message: Message):
     tgbot = TgBot(update, message)
+    tgbot.card = data
     start = time.time()
     checker = lerachapter_20.Checker(data)
     res1 = checker.make_request_1()
@@ -27,7 +33,7 @@ def chk(data, update, message: Message):
 
 
 # Telegram bot initiation
-tgbot = Client("bot")
+tgbot = Client("bot", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH)
 
 # Checking cmd
 @tgbot.on_message(filters.command("chk"))
