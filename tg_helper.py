@@ -53,7 +53,7 @@ class TgBot:
 
     def update_status_100(self, result, time):
         """Updates(Edits) the telegram message with result"""
-        if re.search('card was declined', result) or re.search("card number is incorrect", result) or re.search("invalid", result) or re.search("Invalid", result):
+        if re.search('card was declined', result) or re.search("card number is incorrect", result) or re.search("invalid", result) or re.search("Invalid", result) or re.search("does not support", result):
             status = "Declined ❌"
         else:
             status = "Approved ✅"
