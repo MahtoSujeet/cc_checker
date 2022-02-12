@@ -3,6 +3,7 @@ from api import lerachapter_20, feedingamerica
 from tg_helper import TgBot
 from pyrogram.types import Message
 import os
+import time
 
 
 # bot details
@@ -77,6 +78,8 @@ def mchk_func(update, message: Message):
         print(card, result)
 
         tgbot.edit_message(f"<code>{card}</code>:\n<strong>{result}</strong>")
+
+        time.sleep(5)
 
 
 
