@@ -4,11 +4,13 @@ import status_message
 import re
 
 class TgBot:
-    """
-    This class is Telegram Bot connector.
+    """This class is Telegram Bot connector.
+
     It will send first message automatically when initiated.
     The message will be status of checking card 0%.
-    Argument on initiation is update and message.
+
+    :param update
+    :param message
     """
     def __init__(self, update, message: Message):
         self.update= update
@@ -16,7 +18,7 @@ class TgBot:
         self.card = message.text.split(" ", maxsplit= 2)[1].strip()
         self.bot_message = self.send_first_message()
 
-    
+
     def send_first_message(self):
         """ Sends first message of 0% progress."""
         msg = self.update.send_message(
@@ -25,8 +27,8 @@ class TgBot:
             text = status_message._0.format(card = self.card),
             parse_mode = "html")
         return msg
-        
-    
+
+
     def edit_message(self, text: str):
         """ Edits the message. Arguments: text"""
         self.update.edit_message_text(
@@ -35,7 +37,7 @@ class TgBot:
             text = text,
             parse_mode = "html"
         )
-        
+
     def send_video(self, path):
         """ Sends video """
         self.update.send_video(
@@ -43,7 +45,7 @@ class TgBot:
             reply_to_message_id = self.message.message_id,
             video = path
         )
-        
+
     def update_status_50(self):
         """ This updated the status message on telegram to 50%"""
         self.edit_message(
@@ -57,7 +59,7 @@ class TgBot:
             status = "Declined ❌"
         else:
             status = "Approved ✅"
-            
+
         self.edit_message(
             text = status_message._100.format(
                 card = self.card,

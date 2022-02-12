@@ -7,7 +7,11 @@ class ParentChecker:
     """init has card as arg"""
     def __init__(self, card: str):
         data = card.split("|")
-        self.ccn, self.month, self.year, self.cvc = data[0].strip(), data[1].strip(), data[2].strip(), data[3].strip()
+        try:
+            self.ccn, self.month, self.year, self.cvc = data[0].strip(), data[1].strip(), data[2].strip(), data[3].strip()
+        except IndexError:
+            self.invalid = True
+
         self.session = requests.session()
         self.session.proxies.update(random.choice(proxy_list))
 
@@ -33,4 +37,4 @@ class ParentChecker:
         cj = requests.utils.cookiejar_from_dict(cookies_dict)
         self.session.cookies = cj
 
-    
+

@@ -1,7 +1,7 @@
 from api.parentchecker import ParentChecker
 import json
 from random import randint
-import brotli
+
 
 URL1 = "https://api.stripe.com/v1/payment_methods"
 
@@ -57,7 +57,13 @@ class Checker(ParentChecker):
     """Checker credit card. :param card(sapared by |)"""
 
     def __init__(self, card):
+
+        # This will change to True  if  card iis invlalid when we call super init
+        self.invalid = False
         super().__init__(card)
+        if self.invalid == True:
+            raise ValueError("Invalid Card Format")
+
         self.request_1_done = False
 
 
@@ -80,7 +86,7 @@ class Checker(ParentChecker):
     def make_request_2(self):
         """2nd request. return: result"""
         if self.token == None:
-            return
+            return "Invalid Card Format"
         url = URL2
         headers = super().format_headers(HEADERS2)
         postdata = POSTDATA2.format(token= self.token, ccn= self.ccn[-4:], month= self.month, year= self.year, card_type= self.card_type, rnum= randint(1111, 99999))
