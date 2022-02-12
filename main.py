@@ -1,8 +1,7 @@
 from pyrogram import Client, filters
-from api import lerachapter_20
+from api import lerachapter_20, feedingamerica
 from tg_helper import TgBot
 from pyrogram.types import Message
-import time
 import os
 
 
